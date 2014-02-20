@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+
+		<title>{{ user.name|default('No Name') }}'s Git Achievements</title>
+
+		<link rel="Alternate" type="application/rss+xml" href="index.rss" />
+
+		<link rel="Stylesheet" type="text/css" href="styles/original.css" />
+		{% for style in achievement.publisher_html_styles %}
+		<link rel="Stylesheet" type="text/css" href="{{ style }}" />
+		{% endfor %}
+	</head>
+	<body>
+		<h2>{{ user.name|default('No Name') }}'s Git Achievements <img src="http://www.gravatar.com/avatar/{{ user.email_hash }}" /></h2>
+		Unlocked {{ unlocked_achievements|length }}/{{ all_achievements|length }} <a href="{{ achievement.url|default('.') }}">Git Achievements</a> for {{ points }} points <br />
+		<ul id="unlocked-achievements">
+			{% for achievement in unlocked_achievements %}
+			<li>
+				<div class="title">{{ achievement.get_formatted_name() }}</div>
+				<div class="info">{{ achievement.description|regex_replace('(git\-[a-zA-Z\-]+)', '<a href="\\1">\\1</a>') }}</div>
+			</li>
+			{% endfor %}
+		</ul>
+		Git commands sorted by usage:
+		<pre id="usage">
+			{% for command in commands %}
+			{{ command.usage }} {{ command.command }}
+			{% endfor %}
+		</pre>
+		<script type="text/javascript">
+			function showLocked() {
+				document.getElementById('locked').style.visibility = 'visible';
+				document.getElementById('showlocked').style.visibility = 'hidden';
+			}
+		</script>
+		<a id="showlocked" href="javascript:showLocked()">Show locked achievements</a>
+		<div id="locked">
+			<ul>
+				{% for achievement in locked_achievements %}
+				<li>
+					<div class="title">{{ achievement.name }}</div>
+					<div class="info">{{ achievement.description|regex_replace('(git\-[a-zA-Z\-]+)', '<a href="\\1">\\1</a>') }}</div>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</body>
+</html>
+
