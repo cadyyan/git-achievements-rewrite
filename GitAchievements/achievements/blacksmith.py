@@ -13,5 +13,5 @@ class BlacksmithAchievement(UsageLeveledAchievement):
 
 	name        = 'Blacksmith'
 	description = 'Created a branch using git checkout -b'
-	cmd         = r'checkout.*\-b'
+	cmd         = r'checkout .*\-b'
 
