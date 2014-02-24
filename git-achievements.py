@@ -13,6 +13,7 @@ import git
 import git.config
 import git.exc
 import os.path
+import StringIO
 import sys
 
 class GitAchievementsApp(object):
@@ -66,13 +67,32 @@ class GitAchievementsApp(object):
 
 		# Check if we're handling an achievements command. If not pass it on!
 		command_args = sys.argv[1:]
+		has_error    = False
+		stdout       = StringIO.StringIO()
+		stdout_value = ''
+		stderr_value = ''
 		try:
 			if len(command_args) > 0 and command_args[0] == 'achievements':
 				self._handle_achievements_commands()
 			else:
-				self.git.execute([self.git_cmd] + command_args)
+				self.git.execute([self.git_cmd] + command_args, output_stream = stdout)
 		except SystemExit:
 			pass # Prevent exiting
+		except git.GitCommandError as git_error:
+			has_error    = True
+			stdout_value = stdout.getvalue()[:-1] # Strip off trailing newline
+			stderr_value = git_error.stderr
+		finally:
+			stdout.close()
+
+		if has_error:
+			if stdout_value != '':
+				print stdout_value
+
+			if stderr_value != '':
+				print stderr_value
+
+			return
 
 		# Log the action
 		self.store.log_action(' '.join(command_args))
