@@ -12,6 +12,7 @@ from GitAchievements.achievements.carpenter import CarpenterAchievement
 from GitAchievements.achievements.chimney_sweeper import ChimneySweeperAchievement
 from GitAchievements.achievements.cleaning_lady import CleaningLadyAchievement
 from GitAchievements.achievements.collector import CollectorAchievement
+from GitAchievements.achievements.fisherman import FishermanAchievement
 from GitAchievements.achievements.inventor import InventorAchievement
 from GitAchievements.achievements.student import StudentAchievement
 
@@ -25,6 +26,7 @@ __all__ = [
 	'ChimneySweeperAchievement',
 	'CleaningLadyAchievement',
 	'CollectorAchievement',
+	'FishermanAchievement',
 	'InventorAchievement',
 	'StudentAchievement',
 	'UsageLeveledAchievement',
