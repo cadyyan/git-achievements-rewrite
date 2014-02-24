@@ -16,7 +16,7 @@ class LogFileStore(Store):
 	"""
 
 	ACHIEVEMENT_REGEX = re.compile(r'\*{80}\s+Git Achievement Unlocked\!\s+(.*)\s+.*\s+\*{80}')
-	LEVEL_REGEX       = re.compile(r'((\w+ ?)+)(\(Level (\d+)\))?')
+	META_REGEX        = re.compile(r'((\w+ ?)+)(\((.*)\))?')
 
 	def __init__(self, git_config):
 		"""
@@ -45,18 +45,18 @@ class LogFileStore(Store):
 		achievement_strings = [s.strip() for s in self.ACHIEVEMENT_REGEX.findall(log)]
 		unlocked            = []
 		for unlocked_str in achievement_strings:
-			groups = self.LEVEL_REGEX.match(unlocked_str).groups()
+			groups = self.META_REGEX.match(unlocked_str).groups()
 
 			if len(groups) == 4 and groups[3]:
-				name  = re.sub(r'^(Apprentice|Master)', '', groups[0]).strip()
-				level = int(groups[3].strip())
+				name = re.sub(r'^(Apprentice|Master)', '', groups[0]).strip()
+				meta = groups[3].strip()
 			else:
-				name  = groups[0]
-				level = None
+				name = groups[0]
+				meta = None
 
 			for achiev in achievements:
 				if achiev.name == name:
-					achiev_instance = achiev(level)
+					achiev_instance = achiev.from_string(meta)
 					unlocked.append(achiev_instance)
 
 		return unlocked
@@ -64,6 +64,7 @@ class LogFileStore(Store):
 	def unlock_achievement(self, achievement):
 		log_record  = _format_line('*' * 80)
 		log_record += _format_line('Git Achievement Unlocked!')
+		log_record += _format_line('')
 		log_record += _format_line(achievement.get_formatted_name())
 		log_record += _format_line(achievement.description)
 		log_record += _format_line('*' * 80)

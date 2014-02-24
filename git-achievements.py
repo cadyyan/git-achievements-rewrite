@@ -15,12 +15,12 @@ import git.exc
 import os.path
 import sys
 
-GIT_CMD = '/usr/bin/git'
-
 class GitAchievementsApp(object):
 	"""
 	The achievements application.
 	"""
+
+	git_cmd = '/usr/bin/git'
 
 	def __init__(self):
 		"""
@@ -51,9 +51,6 @@ class GitAchievementsApp(object):
 
 		self.all_achievements      = [ a for a in Achievement.get_plugins() if a.name ]
 		self.unlocked_achievements = self.store.get_unlocked_achievements()
-		self.locked_achievements   = [
-			a for a in self.all_achievements if a not in self.unlocked_achievements or a.can_level
-		]
 
 		self.repo = None
 		try:
@@ -73,7 +70,7 @@ class GitAchievementsApp(object):
 			if len(command_args) > 0 and command_args[0] == 'achievements':
 				self._handle_achievements_commands()
 			else:
-				self.git.execute([GIT_CMD] + command_args)
+				self.git.execute([self.git_cmd] + command_args)
 		except SystemExit:
 			pass # Prevent exiting
 
@@ -81,7 +78,7 @@ class GitAchievementsApp(object):
 		self.store.log_action(' '.join(command_args))
 
 		# Check if we unlocked anything
-		for achievement in self.locked_achievements:
+		for achievement in self.all_achievements:
 			achievements = achievement.check_condition(self)
 			if not achievements:
 				continue

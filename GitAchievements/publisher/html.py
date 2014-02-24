@@ -39,11 +39,11 @@ class HtmlPublisher(Publisher):
 		"""
 
 		context = {
-			'all_achievements': app.all_achievements,
-			'unlocked_achievements': app.unlocked_achievements,
-			'locked_achievements': [
-				a for a in app.locked_achievements if a not in app.unlocked_achievements
-			],
+			'all_achievements': sorted(app.all_achievements, key = lambda a: a.name),
+			'unlocked_achievements': sorted(app.unlocked_achievements, key = lambda a: a.name),
+			'locked_achievements': sorted([
+				a for a in app.all_achievements if a not in app.unlocked_achievements
+			], key = lambda a: a.name),
 			'points': app.get_points(),
 		}
 

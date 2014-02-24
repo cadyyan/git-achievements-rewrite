@@ -13,12 +13,15 @@ class StudentAchievement(Achievement):
 		Accessed the documentation for a command with git-[command] --help
 	"""
 
-	can_level   = False
 	name        = 'Student'
 	description = 'Accessed the documentation for a command with git [command] --help'
 
 	@classmethod
 	def check_condition(cls, app):
+		for achiev in app.unlocked_achievements:
+			if isinstance(achiev, cls):
+				return None
+
 		command_args = sys.argv[1:]
 
 		if len([arg for arg in command_args if arg == '--help' or arg == '-h']) >= 1:

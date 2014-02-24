@@ -7,40 +7,24 @@ The base git achievement class.
 import GitAchievements.plugin
 
 import math
+import re
 
 class Achievement(GitAchievements.plugin.Plugin):
 	"""
 	The base git achievement class.
 	"""
 
-	can_level = True
-
-	def __init__(self, level = None):
+	def __init__(self, *args, **kwargs):
 		"""
-		Sets up the achievement object.
-
-		level - the level unlocked (can be None)
+		Create an achievement object
 		"""
-
-		self.level = level
 
 	def get_formatted_name(self):
 		"""
 		Gets a pretty formatted name for the achievement.
 		"""
 
-		if not self.level:
-			prefix = ''
-		elif self.level <= 3:
-			prefix = 'Apprentice '
-		elif self.level > 6:
-			prefix = 'Master '
-		else:
-			prefix = ''
-
-		postfix = ' (Level {0})'.format(self.level) if self.level else ''
-
-		return '{0}{1}{2}'.format(prefix, self.name, postfix)
+		return self.name
 
 	def __eq__(self, other):
 		"""
@@ -64,7 +48,65 @@ class Achievement(GitAchievements.plugin.Plugin):
 
 		raise NotImplementedError('check_condition not implemented yet')
 
-class UsageLeveledAchievement(Achievement):
+	@classmethod
+	def from_string(cls, formatted_string):
+		"""
+		Creates an achievement object from the formatted string.
+		"""
+
+		return cls()
+
+class LeveledAchievement(Achievement):
+	"""
+	An achievement that is leveled up in some way.
+	"""
+
+	name        = None
+	description = None
+
+	def __init__(self, level):
+		"""
+		Create an achievement at the given level.
+		"""
+
+		super(LeveledAchievement, self).__init__()
+
+		self.level = level
+
+	def get_formatted_name(self):
+		if not self.level:
+			prefix = ''
+		elif self.level <= 3:
+			prefix = 'Apprentice '
+		elif self.level > 6:
+			prefix = 'Master '
+		else:
+			prefix = ''
+
+		postfix = ' (Level {0})'.format(self.level) if self.level else ''
+
+		return '{0}{1}{2}'.format(prefix, self.name, postfix)
+
+	def __eq__(self, other):
+		"""
+		Checks the achievement name and the level.
+		"""
+
+		return self.name == other.name and self.level == other.level
+
+	def __ne__(self, other):
+		"""
+		Checks the achievement name and the level.
+		"""
+
+		return self.name != other.name or self.level != other.level
+
+	@classmethod
+	def from_string(cls, formatted_string):
+		level = int(re.search(r'Level (\d+)', formatted_string).groups()[0])
+		return cls(level)
+
+class UsageLeveledAchievement(LeveledAchievement):
 	"""
 	Achievement that is leveled up through normal usage.
 	"""
