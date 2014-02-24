@@ -9,6 +9,7 @@ from GitAchievements.achievements.author import AuthorAchievement
 from GitAchievements.achievements.blacksmith import BlacksmithAchievement
 from GitAchievements.achievements.butcher import ButcherAchievement
 from GitAchievements.achievements.carpenter import CarpenterAchievement
+from GitAchievements.achievements.chimney_sweeper import ChimneySweeperAchievement
 from GitAchievements.achievements.inventor import InventorAchievement
 from GitAchievements.achievements.student import StudentAchievement
 
@@ -19,6 +20,7 @@ __all__ = [
 	'BlacksmithAchievement',
 	'ButcherAchievement',
 	'CarpenterAchievement',
+	'ChimneySweeperAchievement',
 	'InventorAchievement',
 	'StudentAchievement',
 	'UsageLeveledAchievement',
