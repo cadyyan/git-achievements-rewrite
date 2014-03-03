@@ -146,12 +146,16 @@ class GitAchievementsApp(object):
 		# pylint: disable=C0301
 		cmd_parser = argparse.ArgumentParser(description = 'Git Achievements')
 		group = cmd_parser.add_mutually_exclusive_group(required = True)
+		# TODO: these would probably look nicer as subcommands
 		group.add_argument('-p', '--publish',
 				dest = 'publish', action = 'store_true',
 				help = 'Generate achievements html files and if achievements.upload is set to \"true\" add the files and push to origin.')
 		group.add_argument('-l', '--list',
 				dest = 'list', action = 'store_true',
 				help = 'Show all achievements.')
+		group.add_argument('--locked',
+				dest = 'locked', action = 'store_true',
+				help = 'Show all locked achievements')
 		# pylint: enable=C0301
 
 		args = cmd_parser.parse_args(sys.argv[2:])
@@ -160,6 +164,8 @@ class GitAchievementsApp(object):
 			self._handle_command_publish()
 		elif args.list:
 			self._handle_command_list()
+		elif args.locked:
+			self._handle_command_locked()
 
 	def _handle_command_publish(self):
 		"""
@@ -179,6 +185,18 @@ class GitAchievementsApp(object):
 
 		for achievement in self.unlocked_achievements:
 			self._print_achievement(achievement)
+
+	def _handle_command_locked(self):
+		"""
+		Handle the locked command.
+		"""
+
+		locked = sorted([
+			a for a in self.all_achievements if a not in self.unlocked_achievements
+		], key = lambda a: a.name)
+
+		for achievement in locked:
+			print achievement.name
 
 	def _publish_achievements(self):
 		"""
