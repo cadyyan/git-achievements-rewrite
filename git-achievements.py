@@ -138,6 +138,15 @@ class GitAchievementsApp(object):
 
 		return points
 
+	def locked_achievements(self):
+		"""
+		Gets the achievements that are still locked.
+		"""
+
+		return sorted([
+			a for a in self.all_achievements if a not in self.unlocked_achievements
+		], key = lambda a: a.name)
+
 	def _handle_achievements_commands(self):
 		"""
 		Handles the achievement related commands.
@@ -191,9 +200,7 @@ class GitAchievementsApp(object):
 		Handle the locked command.
 		"""
 
-		locked = sorted([
-			a for a in self.all_achievements if a not in self.unlocked_achievements
-		], key = lambda a: a.name)
+		locked = self.locked_achievements()
 
 		for achievement in locked:
 			print achievement.name
