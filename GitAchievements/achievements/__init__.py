@@ -28,6 +28,7 @@ from GitAchievements.achievements.plumber import PlumberAchievement
 from GitAchievements.achievements.presenter import PresenterAchievement
 from GitAchievements.achievements.product_manager import ProductManagerAchievement
 from GitAchievements.achievements.seamstress import SeamstressAchievement
+from GitAchievements.achievements.socialite import SocialiteAchievement
 from GitAchievements.achievements.student import StudentAchievement
 
 __all__ = [
@@ -56,6 +57,7 @@ __all__ = [
 	'PresenterAchievement',
 	'ProductManagerAchievement',
 	'SeamstressAchievement',
+	'SocialiteAchievement',
 	'StudentAchievement',
 	'UsageLeveledAchievement',
 ]
