@@ -268,11 +268,7 @@ def _format_line(line):
 	Format a line into a format thats suitable for a console/terminal.
 	"""
 
-	padding       = 80 - len(line)
-	left_padding  = padding / 2
-	right_padding = padding - left_padding
-
-	line = ' ' * left_padding + line + ' ' * right_padding
+	line = line.center(80, ' ')
 
 	return line
 
