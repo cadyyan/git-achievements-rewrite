@@ -5,7 +5,7 @@ Investigator
 
 from GitAchievements.achievements import UsageLeveledAchievement
 
-class InventorAchievement(UsageLeveledAchievement):
+class InvestigatorAchievement(UsageLeveledAchievement):
 	"""
 	Investigator
 		Used git blame to annotate a file with information about how each line changed
