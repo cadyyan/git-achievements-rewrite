@@ -23,6 +23,7 @@ from GitAchievements.achievements.investigator import InvestigatorAchievement
 from GitAchievements.achievements.locksmith import LocksmithAchievement
 from GitAchievements.achievements.merchant import MerchantAchievement
 from GitAchievements.achievements.miller import MillerAchievement
+from GitAchievements.achievements.pilgrim import PilgrimAchievement
 from GitAchievements.achievements.student import StudentAchievement
 
 __all__ = [
@@ -46,6 +47,7 @@ __all__ = [
 	'LocksmithAchievement',
 	'MerchantAchievement',
 	'MillerAchievement',
+	'PilgrimAchievement',
 	'StudentAchievement',
 	'UsageLeveledAchievement',
 ]
