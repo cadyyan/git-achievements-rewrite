@@ -64,7 +64,7 @@ class InventorAchievement(Achievement):
 			return None
 
 		usage = app.store.get_usage_count(subcommand)
-		if usage > 1:
+		if usage > 1: # TODO: it would be better to check if this achievement has been unlocked already
 			return None
 
 		return cls(subcommand)
