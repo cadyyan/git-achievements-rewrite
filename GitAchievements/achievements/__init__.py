@@ -31,6 +31,7 @@ from GitAchievements.achievements.seamstress import SeamstressAchievement
 from GitAchievements.achievements.socialite import SocialiteAchievement
 from GitAchievements.achievements.stone_mason import StoneMasonAchievement
 from GitAchievements.achievements.student import StudentAchievement
+from GitAchievements.achievements.thug import ThugAchievement
 
 __all__ = [
 	'Achievement',
@@ -61,6 +62,7 @@ __all__ = [
 	'SocialiteAchievement',
 	'StoneMasonAchievement',
 	'StudentAchievement',
+	'ThugAchievement',
 	'UsageLeveledAchievement',
 ]
 
