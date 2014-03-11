@@ -20,6 +20,7 @@ from GitAchievements.achievements.gardner import GardnerAchievement
 from GitAchievements.achievements.gipsy import GipsyAchievement
 from GitAchievements.achievements.goldsmith import GoldsmithAchievement
 from GitAchievements.achievements.historian import HistorianAchievement
+from GitAchievements.achievements.homeowner import HomeownerAchievement
 from GitAchievements.achievements.hunter import HunterAchievement
 from GitAchievements.achievements.inventor import InventorAchievement
 from GitAchievements.achievements.investigator import InvestigatorAchievement
@@ -54,6 +55,7 @@ __all__ = [
 	'GipsyAchievement',
 	'GoldsmithAchievement',
 	'HistorianAchievement',
+	'HomeownerAchievement',
 	'HunterAchievement',
 	'InventorAchievement',
 	'InvestigatorAchievement',
