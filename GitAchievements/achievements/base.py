@@ -126,3 +126,23 @@ class UsageLeveledAchievement(LeveledAchievement):
 
 		return cls(level = current_level + 1)
 
+class SingleUseAchievement(Achievement):
+	"""
+	An achievement that needs to be used once to be unlocked.
+	"""
+
+	name        = None
+	description = None
+	cmd         = None
+
+	@classmethod
+	def check_condition(cls, app):
+		usage = app.store.get_usage_count(cls.cmd)
+		if usage == 0:
+			return None
+
+		if len([a for a in app.unlocked_achievements if a.name == cls.name]) > 0:
+			return None
+
+		return cls()
+
