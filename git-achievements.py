@@ -99,7 +99,7 @@ class GitAchievementsApp(object):
 
 		# Check if we unlocked anything
 		for achievement in self.all_achievements:
-			achievements = achievement.check_condition(self)
+			achievements = achievement.check_condition(self, command_args)
 			if not achievements:
 				continue
 

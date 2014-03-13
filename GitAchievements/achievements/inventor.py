@@ -48,7 +48,7 @@ class InventorAchievement(Achievement):
 		return cls(formatted_string)
 
 	@classmethod
-	def check_condition(cls, app):
+	def check_condition(cls, app, command_args):
 		git_core_path = app.git.execute([app.git_cmd, '--exec-path'])
 		subcommand    = sys.argv[1]
 

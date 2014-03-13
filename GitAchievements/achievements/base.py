@@ -41,7 +41,7 @@ class Achievement(GitAchievements.plugin.Plugin):
 		return self.name != other.name
 
 	@classmethod
-	def check_condition(cls, app):
+	def check_condition(cls, app, command_args):
 		"""
 		Checks if the condition has been met for unlocking this achievement.
 		"""
@@ -116,7 +116,7 @@ class UsageLeveledAchievement(LeveledAchievement):
 	cmd         = None
 
 	@classmethod
-	def check_condition(cls, app):
+	def check_condition(cls, app, command_args):
 		current_level = app.get_current_level(cls.name)
 		required      = sum([math.pow(2, level) for level in range(1, current_level + 2)])
 		usage         = app.store.get_usage_count(cls.cmd)
@@ -136,7 +136,7 @@ class SingleUseAchievement(Achievement):
 	cmd         = None
 
 	@classmethod
-	def check_condition(cls, app):
+	def check_condition(cls, app, command_args):
 		usage = app.store.get_usage_count(cls.cmd)
 		if usage == 0:
 			return None

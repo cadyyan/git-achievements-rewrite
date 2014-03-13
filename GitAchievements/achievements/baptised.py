@@ -15,7 +15,7 @@ class BaptisedAchievement(Achievement):
 	description = 'Set global user name using git config'
 
 	@classmethod
-	def check_condition(cls, app):
+	def check_condition(cls, app, command_args):
 		usage = app.store.get_usage_count('config --global user.name')
 		if usage == 0:
 			return None

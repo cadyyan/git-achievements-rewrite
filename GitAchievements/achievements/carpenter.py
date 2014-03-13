@@ -18,7 +18,7 @@ class CarpenterAchievement(Achievement):
 	description = 'Custom git hooks are installed which helps catch issues before they are shared.'
 
 	@classmethod
-	def check_condition(cls, app):
+	def check_condition(cls, app, command_args):
 		if not app.repo:
 			return False
 
