@@ -92,6 +92,9 @@ class LeveledAchievement(Achievement):
 		Checks the achievement name and the level.
 		"""
 
+		if not isinstance(other, LeveledAchievement):
+			return False
+
 		return self.name == other.name and self.level == other.level
 
 	def __ne__(self, other):
