@@ -7,6 +7,7 @@ from GitAchievements.achievements.architect import ArchitectAchievement
 from GitAchievements.achievements.archivist import ArchivistAchievement
 from GitAchievements.achievements.author import AuthorAchievement
 from GitAchievements.achievements.baptised import BaptisedAchievement
+from GitAchievements.achievements.beach_lion import BeachLionAchievement
 from GitAchievements.achievements.blacksmith import BlacksmithAchievement
 from GitAchievements.achievements.butcher import ButcherAchievement
 from GitAchievements.achievements.caretaker import CaretakerAchievement
@@ -45,6 +46,7 @@ __all__ = [
 	'ArchitectAchievement',
 	'ArchivistAchievement',
 	'BaptisedAchievement',
+	'BeachLionAchievement',
 	'BlacksmithAchievement',
 	'ButcherAchievement',
 	'CaretakerAchievement',
