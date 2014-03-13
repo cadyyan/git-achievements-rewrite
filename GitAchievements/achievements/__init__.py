@@ -25,6 +25,7 @@ from GitAchievements.achievements.hunter import HunterAchievement
 from GitAchievements.achievements.inventor import InventorAchievement
 from GitAchievements.achievements.investigator import InvestigatorAchievement
 from GitAchievements.achievements.let_there_be_light import LetThereBeLightAchievement
+from GitAchievements.achievements.librarian import LibrarianAchievement
 from GitAchievements.achievements.locksmith import LocksmithAchievement
 from GitAchievements.achievements.merchant import MerchantAchievement
 from GitAchievements.achievements.miller import MillerAchievement
@@ -61,6 +62,7 @@ __all__ = [
 	'InventorAchievement',
 	'InvestigatorAchievement',
 	'LetThereBeLightAchievement',
+	'LibrarianAchievement',
 	'LocksmithAchievement',
 	'MerchantAchievement',
 	'MillerAchievement',
