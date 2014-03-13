@@ -12,6 +12,7 @@ from GitAchievements.achievements.blacksmith import BlacksmithAchievement
 from GitAchievements.achievements.butcher import ButcherAchievement
 from GitAchievements.achievements.caretaker import CaretakerAchievement
 from GitAchievements.achievements.carpenter import CarpenterAchievement
+from GitAchievements.achievements.cathedral_architect import CathedralArchitectAchievement
 from GitAchievements.achievements.cherry_picker import CherryPickerAchievement
 from GitAchievements.achievements.chimney_sweeper import ChimneySweeperAchievement
 from GitAchievements.achievements.cleaning_lady import CleaningLadyAchievement
@@ -51,6 +52,7 @@ __all__ = [
 	'ButcherAchievement',
 	'CaretakerAchievement',
 	'CarpenterAchievement',
+	'CathedralArchitectAchievement',
 	'CherryPickerAchievement',
 	'ChimneySweeperAchievement',
 	'CleaningLadyAchievement',
