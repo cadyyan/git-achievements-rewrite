@@ -18,6 +18,7 @@ from GitAchievements.achievements.cherry_picker import CherryPickerAchievement
 from GitAchievements.achievements.chimney_sweeper import ChimneySweeperAchievement
 from GitAchievements.achievements.cleaning_lady import CleaningLadyAchievement
 from GitAchievements.achievements.collector import CollectorAchievement
+from GitAchievements.achievements.delivery_boy import DeliveryBoyAchievement
 from GitAchievements.achievements.fisherman import FishermanAchievement
 from GitAchievements.achievements.gardner import GardnerAchievement
 from GitAchievements.achievements.gipsy import GipsyAchievement
@@ -59,6 +60,7 @@ __all__ = [
 	'ChimneySweeperAchievement',
 	'CleaningLadyAchievement',
 	'CollectorAchievement',
+	'DeliveryBoyAchievement',
 	'FishermanAchievement',
 	'GardnerAchievement',
 	'GipsyAchievement',
